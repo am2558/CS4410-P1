@@ -1,20 +1,28 @@
-# spec
+#spec
 def PrioQ(n) returns init:
-# Creates the initial value of a new priority queue with n priorities, numbered 0 through n-1. 
-# Priority 0 is the highest priority. The queue is initially empty.
     init = []
-    for i in range(n):
-        init.append([])
+    i = 0
+    while i < n:
+        init[len init] = []
+        i = i + 1
 
 def put(pq, prio, v):
-# Inserts value v into priority prio. (You do not have to consider the possibility that prio 
-# is out of bounds.) pq points to a variable containing the priority queue.
     atomically:
-        pq[prio].append(v)
+        (!pq)[prio][len (!pq)[prio]] = v
 
 def get(pq) returns r:
     r = None
-    for i in range(len(pq)):
-        if len(pq[i]) > 0:
-            atomically:
-                r = pq[i].pop(0)
+    i = 0
+    while i < len (!pq):
+        atomically:
+            if (r == None) and ((len (!pq)[i]) > 0):
+                r = (!pq)[i][0]
+                del (!pq)[i][0]
+        i = i + 1
+
+p = PrioQ(3)
+put(?p, 0, "a")
+put(?p, 1, "b")
+put(?p, 2, "c")
+print get(?p)
+print get(?p)
