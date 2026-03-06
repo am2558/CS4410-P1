@@ -12,9 +12,9 @@ def put(pq, prio, v):
     atomically:
         pq[prio].append(v)
 
-def get(pq) returns res:
-    res = None
+def get(pq) returns r:
+    r = None
     for i in range(len(pq)):
         if len(pq[i]) > 0:
             atomically:
-                res = pq[i].pop(0)
+                r = pq[i].pop(0)
