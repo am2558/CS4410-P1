@@ -23,25 +23,29 @@ def put(pq, prio, v):
     release(?pq->lock)
 
 def get(pq) returns r:
-    r = None
+    r = (False, None)
     acquire(?pq->lock)
-    i = 0
-    while (r == None) and (i < len pq->tails):
+
+    var i = 0
+    while (i < len pq->tails) and (r[0] == False):
         let tail = pq->tails[i]:
             if tail != None:
                 let head = tail->next:
-                    r = head->value
+                    r = (True, head->value)
+
                     if head == tail:
                         pq->tails[i] = None
                     else:
                         tail->next = head->next
+
                     free(head)
         i = i + 1
+
     release(?pq->lock)
 
-# p = PrioQ(3)
-# put(?p, 0, "a")
-# put(?p, 1, "b")
-# put(?p, 2, "c")
-# print get(?p)
-# print get(?p)
+p = PrioQ(3)
+put(?p, 0, "a")
+put(?p, 1, "b")
+put(?p, 2, "c")
+print get(?p)
+print get(?p)

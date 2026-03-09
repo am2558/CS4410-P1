@@ -11,12 +11,12 @@ def put(pq, prio, v):
         (!pq)[prio][len (!pq)[prio]] = v
 
 def get(pq) returns r:
-    r = None
+    r = (False, None)
     var i = 0
-    while i < len (!pq):
+    while (i < len (!pq)) and (r[0] == False):
         atomically:
-            if (r == None) and ((len (!pq)[i]) > 0):
-                r = (!pq)[i][0]
+            if (r[0] == False) and ((len (!pq)[i]) > 0):
+                r = (True, (!pq)[i][0])
                 del (!pq)[i][0]
         i = i + 1
 
