@@ -1,7 +1,7 @@
 #spec
 def PrioQ(n) returns init:
     init = []
-    i = 0
+    var i = 0
     while i < n:
         init[len init] = []
         i = i + 1
@@ -12,7 +12,7 @@ def put(pq, prio, v):
 
 def get(pq) returns r:
     r = None
-    i = 0
+    var i = 0
     while i < len (!pq):
         atomically:
             if (r == None) and ((len (!pq)[i]) > 0):
@@ -20,9 +20,9 @@ def get(pq) returns r:
                 del (!pq)[i][0]
         i = i + 1
 
-p = PrioQ(3)
-put(?p, 0, "a")
-put(?p, 1, "b")
-put(?p, 2, "c")
-print get(?p)
-print get(?p)
+# p = PrioQ(3)
+# put(?p, 0, "a")
+# put(?p, 1, "b")
+# put(?p, 2, "c")
+# print get(?p)
+# print get(?p)

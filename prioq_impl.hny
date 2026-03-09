@@ -3,7 +3,7 @@ from alloc import malloc, free
 
 def PrioQ(n) returns init:
     tails = []
-    i = 0
+    var i = 0
     while i < n:
         tails[len tails] = None
         i = i + 1
@@ -39,9 +39,9 @@ def get(pq) returns r:
         i = i + 1
     release(?pq->lock)
 
-p = PrioQ(3)
-put(?p, 0, "a")
-put(?p, 1, "b")
-put(?p, 2, "c")
-print get(?p)
-print get(?p)
+# p = PrioQ(3)
+# put(?p, 0, "a")
+# put(?p, 1, "b")
+# put(?p, 2, "c")
+# print get(?p)
+# print get(?p)
