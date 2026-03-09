@@ -7,13 +7,16 @@ const NGET = 1
 myq = prioq.PrioQ(NPRIO)
 
 def thread_put():
-    print("invoke put", 0)
-    prioq.put(?myq, 0, "a")
-    print("complete put")
+    var priority = 0
+    var value = choose {"a", "b"}
+    print ("invoke put",  priority)
+    prioq.put(?myq, priority, value)
+    print ("complete put", priority)
 
 def thread_get():
+    print ("invoke get")
     var res = prioq.get(?myq)
-    print("complete get", res)
+    print ("complete get", res)
 
 i = 0
 while i < NPUT:
