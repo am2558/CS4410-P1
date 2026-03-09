@@ -7,7 +7,7 @@ const NGET = 1
 myq = prioq.PrioQ(NPRIO)
 
 def thread_put():
-    var priority = 0
+    var priority = choose {0..NPRIO-1}
     var value = choose {"a", "b"}
     print ("invoke put",  priority)
     prioq.put(?myq, priority, value)

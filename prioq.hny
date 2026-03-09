@@ -3,7 +3,7 @@ def PrioQ(n) returns init:
     init = []
     var i = 0
     while i < n:
-        init[len init] = []
+        init[i] = []
         i = i + 1
 
 def put(pq, prio, v):
@@ -11,18 +11,18 @@ def put(pq, prio, v):
         (!pq)[prio][len (!pq)[prio]] = v
 
 def get(pq) returns r:
-    r = (False, None)
-    var i = 0
-    while (i < len (!pq)) and (r[0] == False):
-        atomically:
+    atomically:
+        r = (False, None)
+        var i = 0
+        while (i < len (!pq)) and (r[0] == False):
             if (r[0] == False) and ((len (!pq)[i]) > 0):
-                r = (True, (!pq)[i][0])
-                del (!pq)[i][0]
-        i = i + 1
+                    r = (True, (!pq)[i][0])
+                    del (!pq)[i][0]
+            i = i + 1
 
-# p = PrioQ(3)
-# put(?p, 0, "a")
-# put(?p, 1, "b")
-# put(?p, 2, "c")
-# print get(?p)
-# print get(?p)
+p = PrioQ(3)
+put(?p, 0, "a")
+put(?p, 1, "b")
+put(?p, 2, "c")
+print get(?p)
+print get(?p)
